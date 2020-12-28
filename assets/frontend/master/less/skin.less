@@ -1,0 +1,1492 @@
+@import "for";
+@import "variables";
+@import "mixins";
+
+// Basic
+a {
+	color: @color-primary;
+	&:hover {
+		color: lighten(@color-primary, 5%);
+	}
+	&:active {
+		color: darken(@color-primary, 5%);
+	}
+}
+
+// Font Colors
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+
+		.heading-@{name},
+		.lnk-@{name},
+		.text-color-@{name} {
+			color: @color !important;
+		}
+
+		.heading.heading-@{name} {
+			h1, h2, h3, h4, h5, h6 {
+				border-color: @color;
+			}
+		}
+	}
+}
+
+// Alternative Font
+.alternative-font {
+	color: @color-primary;
+}
+
+// Blockquote
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+
+		.blockquote-@{name} {
+			border-color: @color !important;
+		}
+	}
+}
+
+// Drop Caps
+p.drop-caps {
+	&:first-child:first-letter {
+		color: @color-primary;
+	}
+	&.drop-caps-style-2:first-child:first-letter {
+		background-color: @color-primary;
+	}
+}
+
+// Nav
+ul.nav-pills > li.active > a {
+	background-color: @color-primary;
+	&:hover, &:focus {
+		background-color: @color-primary;
+	}
+}
+
+// Sort
+.sort-source-wrapper .nav > li.active > a {
+	color: @color-primary;
+	&:hover, &:focus {
+		color: @color-primary;
+	}
+}
+
+// Labels
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.label-@{name} {
+			background-color: @color;
+		}
+	}
+}
+
+// Buttons
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.btn-@{name} {
+			border-color: @color @color darken(@color, 10%);
+			.buttonBackground(@color, spin(@color, 20%));
+			&:hover, &:focus {
+				color: @color-inverse;
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.btn-borders {
+			&.btn-@{name} {
+				background: transparent;
+				border-color: @color;
+				color: @color;
+				text-shadow: none;
+				&:hover, &:focus {
+					.buttonBackground(@color, spin(@color, 20%));
+					border-color: @color !important;
+					color: @color-inverse;
+				}
+			}
+		}
+	}
+}
+
+// Pagination
+.pagination {
+	> li > a,
+	> li > span,
+	> li > a:hover,
+	> li > span:hover,
+	> li > a:focus,
+	> li > span:focus {
+		color: @color-primary;
+	}
+	> .active > a,
+	> .active > span,
+	> .active > a:hover,
+	> .active > span:hover,
+	> .active > a:focus,
+	> .active > span:focus {
+		background-color: @color-primary !important;
+		border-color: @color-primary;
+	}
+}
+
+body.dark .pagination {
+	> li > a,
+	> li > span,
+	> li > a:hover,
+	> li > span:hover,
+	> li > a:focus,
+	> li > span:focus {
+		color: @color-primary;
+	}
+	> .active > a,
+	> .active > span,
+	> .active > a:hover,
+	> .active > span:hover,
+	> .active > a:focus,
+	> .active > span:focus {
+		background-color: @color-primary;
+		border-color: @color-primary;
+	}
+}
+
+.pagination > .active > a,
+body.dark .pagination > .active > a {
+	border-color: @color-primary @color-primary darken(@color-primary, 10%);
+	.buttonBackground(@color-primary, spin(@color-primary, 20%));
+}
+
+// Alerts
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.alert-@{name} {
+			background-color: @color;
+			border-color: darken(@color, 3%);
+			color: @color-inverse;
+
+			.alert-link {
+				color: @color-inverse;
+			}
+		}
+	}
+}
+
+// Progress Bar
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+
+		.progress-bar-@{name} {
+			background-color: @color;
+		}
+	}
+}
+
+// Sections
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		section.section-@{name} {
+			background-color: @color !important;
+			border-color: darken(@color, 5%) !important;
+
+			h1, h2, h3, h4, h5, h6 {
+				color: @color-inverse;
+			}
+
+			p {
+				color: darken(@color-inverse, 10%);
+			}
+		}
+	}
+}
+
+html {
+	.for(@color-background-scale); .-each(@value) {
+		@index:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+
+		section.section-default-scale-@{index} {
+			background-color: @color !important;
+			border-top-color: darken(@color, 3%) !important;
+		}
+	}
+}
+
+html.dark {
+	.for(@color-background-scale-dark); .-each(@value) {
+		@index:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+
+		section.section-default-scale-@{index} {
+			background-color: @color !important;
+			border-top-color: darken(@color, 3%) !important;
+		}
+	}
+}
+
+
+// Page Header
+section.page-header {
+	h1 {
+		border-bottom-color: @color-primary;
+	}
+
+	&.custom-product {
+		background-color: darken(@color-primary, 5%);
+		border-top-color: darken(@color-primary, 2%);
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.page-header-color.page-header-@{name} {
+			background-color: @color;
+			border-bottom-color: @color;
+			color: @color-inverse;
+			h1 {
+				color: @color-inverse;
+				span {
+					color: @color-inverse;
+				}
+			}
+			a {
+				color: @color-inverse;
+			}
+			.breadcrumb > .active {
+				color: @color-inverse;
+			}
+		}
+	}
+}
+
+// Toggle
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.toggle-@{name} {
+			.toggle {
+				label {
+					color: @color;
+					border-left-color: @color;
+					border-right-color: @color;
+				}
+				&.active > label {
+					background-color: @color;
+					border-color: @color;
+					color: @color-inverse;
+				}
+			}
+			&.toggle-simple .toggle > label:after {
+				background-color: @color;
+			}
+		}
+	}
+}
+
+// Thumb
+.thumb-info {
+	.thumb-info-type {
+		background-color: @color-primary;
+	}
+	.thumb-info-action-icon {
+		background-color: @color-primary;
+	}
+}
+
+.thumb-info-social-icons a {
+	background-color: @color-primary;
+}
+
+.thumbnail .zoom {
+	background-color: @color-primary;
+}
+
+.img-thumbnail .zoom {
+	background-color: @color-primary;
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.thumb-info .thumb-info-action-icon-@{name} {
+			background-color: @color;
+			i {
+				color: @color-inverse;
+			}
+		}
+	}
+}
+
+// Inverted
+.inverted {
+	background-color: @color-primary;
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+
+		.inverted-@{name} {
+			background-color: @color;
+		}
+	}
+}
+
+// Social
+.social-icons-list a {
+	background-color: @color-primary;
+}
+
+// Carousel
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+	background-color: darken(@color-primary, 6%);
+}
+
+.owl-carousel.show-nav-title .owl-controls .owl-nav [class*="owl-"] {
+	color: @color-primary;
+}
+
+.owl-theme .owl-controls .owl-nav [class*="owl-"] {
+	border-color: @color-primary @color-primary darken(@color-primary, 10%);
+	.buttonBackground(@color-primary, spin(@color-primary, 20%));
+}
+
+// Tabs
+html body,
+html.dark body {
+	.tabs {
+		.nav-tabs {
+			a, a:hover {
+				color: @color-primary;
+			}
+
+			a:hover,
+			a:focus {
+				border-top-color: @color-primary;
+			}
+
+			li.active a {
+				border-top-color: @color-primary;
+				color: @color-primary;
+			}
+			&.nav-justified {
+				a:hover,
+				a:focus {
+					border-top-color: @color-primary;
+				}
+			}
+		}
+		&.tabs-bottom {
+			.nav-tabs {
+				li a:hover,
+				li.active a,
+				li.active a:hover,
+				li.active a:focus {
+					border-bottom-color: @color-primary;
+				}
+			}
+		}
+		&.tabs-vertical.tabs-left {
+			.nav-tabs {
+				li a:hover,
+				li.active a,
+				li.active a:hover,
+				li.active a:focus {
+					border-left-color: @color-primary;
+				}
+			}
+		}
+		&.tabs-vertical.tabs-right {
+			.nav-tabs {
+				li a:hover,
+				li.active a,
+				li.active a:hover,
+				li.active a:focus {
+					border-right-color: @color-primary;
+				}
+			}
+		}
+	}
+}
+
+html body,
+html.dark body {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.tabs-@{name} {
+			.nav-tabs {
+				&,
+				&.nav-justified {
+					li {
+						a {
+							&,
+							&:hover {
+								color: @color;
+							}
+
+							&:hover {
+								border-top-color: @color;
+							}
+						}
+
+						&.active {
+							a,
+							a:hover,
+							a:focus {
+								border-top-color: @color;
+								color: @color;
+							}
+						}
+					}
+				}
+			}
+
+			&.tabs-bottom {
+				.nav-tabs {
+					&,
+					&.nav-justified {
+						li {
+							a {
+								&:hover {
+									border-bottom-color: @color;
+								}
+							}
+
+							&.active {
+								a,
+								a:hover,
+								a:focus {
+									border-bottom-color: @color;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			&.tabs-vertical {
+				&.tabs-left {
+					li {
+						a {
+							&:hover {
+								border-left-color: @color;
+							}
+						}
+
+						&.active {
+							a,
+							a:hover,
+							a:focus {
+								border-left-color: @color;
+							}
+						}
+					}
+				}
+
+				&.tabs-right {
+					li {
+						a {
+							&:hover {
+								border-right-color: @color;
+							}
+						}
+
+						&.active {
+							a,
+							a:hover,
+							a:focus {
+								border-right-color: @color;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+html[dir="rtl"] {
+	.tabs {
+		&.tabs-vertical.tabs-left {
+			.nav-tabs {
+				li a:hover,
+				li.active a,
+				li.active a:hover,
+				li.active a:focus {
+					border-right-color: @color-primary;
+					border-left-color: transparent;
+				}
+			}
+		}
+		&.tabs-vertical.tabs-right {
+			.nav-tabs {
+				li a:hover,
+				li.active a,
+				li.active a:hover,
+				li.active a:focus {
+					border-right-color: transparent;
+					border-left-color: @color-primary;
+				}
+			}
+		}
+	}
+}
+
+// Lists
+.list {
+	&.list-icons {
+		li .fa {
+			color: @color-primary;
+			border-color: @color-primary;
+		}
+		&.list-icons-style-3 {
+			li .fa {
+				background-color: @color-primary;
+			}
+		}
+	}
+	&.list-ordened {
+		li {
+			&:before {
+				color: @color-primary;
+				border-color: @color-primary;
+			}
+		}
+		&.list-ordened-style-3 {
+			li {
+				&:before {
+					background-color: @color-primary;
+				}
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.list-@{name} {
+			&.list-icons {
+				li .fa {
+					color: @color;
+					border-color: @color;
+				}
+				&.list-icons-style-3 {
+					li .fa {
+						background-color: @color;
+						color: @color-inverse;
+					}
+				}
+			}
+			&.list-ordened {
+				li {
+					&:before {
+						color: @color;
+					}
+				}
+				&.list-ordened-style-3 {
+					li {
+						&:before {
+							background-color: @color-primary;
+							color: @color-inverse;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Parallax
+.parallax blockquote i.fa-quote-left {
+	color: @color-primary;
+}
+
+// Video
+section.video blockquote i.fa-quote-left {
+	color: @color-primary;
+}
+
+// Panel
+.panel-group {
+	.panel-heading a {
+		color: @color-primary;
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.panel-group {
+			&.panel-group-@{name} {
+				.panel-heading {
+					background-color: @color !important;
+					a {
+						color: @color-inverse;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Dividers
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.divider {
+			&.divider-@{name} {
+				.fa {
+					color: @color;
+				}
+				&.divider-small {
+					hr {
+						background: @color;
+					}
+				}
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.divider {
+			&.divider-style-2 {
+				&.divider-@{name} {
+					.fa {
+						background: @color;
+						color: @color-inverse;
+					}
+				}
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.divider {
+			&.divider-style-3 {
+				&.divider-@{name} {
+					.fa {
+						border-color: @color;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Header
+@media (min-width: 992px) {
+	#header {
+
+		nav ul.nav-main {
+
+			a, a:focus, a:hover {
+				color: @color-primary;
+			}
+
+			> li.open a,
+			> li.active > a,
+			> li:hover > a {
+				color: @color-primary-inverse;
+				background-color: @color-primary !important;
+			}
+
+			.dropdown > ul.dropdown-menu {
+				border-top-color: @color-primary !important;
+			}
+
+			.dropdown-submenu > a:after,
+			.dropdown-submenu:hover > a:after {
+				border-left-color: @color-primary;
+			}
+
+		}
+
+	}
+}
+
+#header {
+
+	nav ul.nav-main {
+
+		.tip {
+			background: @color-primary;
+			color: @color-primary-inverse;
+			&:before {
+				border-right-color: @color-primary;
+			}
+		}
+
+	}
+
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		#header {
+
+			nav ul.nav-main {
+
+				.tip-@{name} {
+					background: @color !important;
+					color: @color-inverse !important;
+					&:before {
+						border-right-color: @color !important;
+					}
+				}
+
+			}
+
+		}
+	}
+}
+
+html[dir="rtl"] {
+	#header {
+
+		nav ul.nav-main {
+
+			.tip.skin {
+				&:before {
+					border-left-color: @color-primary;
+				}
+			}
+
+		}
+
+	}
+}
+
+@media (min-width: 992px) {
+	#header {
+		&.single-menu {
+
+			nav ul.nav-main {
+
+				li.active > a {
+					border-top: 5px solid @color-primary;
+				}
+
+			}
+
+		}
+
+		&.darken-top-border {
+			border-top: 5px solid darken(@color-primary,5%) !important;
+		}
+
+		&.colored {
+
+			.header-top {
+				background-color: @color-primary;
+
+				ul.nav-top li a:hover {
+					background-color: lighten(@color-primary, 5%) !important;
+				}
+
+			}
+
+		}
+
+		&.flat-menu {
+
+			nav ul.nav-main {
+
+				li > a,
+				li.active > a {
+					color: #666;
+				}
+
+				> li.active > a {
+					color: @color-primary !important;
+					background-color: transparent !important;
+				}
+
+				> li:hover > a,
+				> li > a:hover {
+					color: @color-primary-inverse !important;
+					background-color: @color-primary !important;
+				}
+
+			}
+
+		}
+
+		nav.mega-menu ul.nav-main li.mega-menu-item ul.dropdown-menu {
+			border-top-color: @color-primary;
+		}
+
+	}
+}
+
+// Colors
+@media (min-width: 992px) {
+	html {
+		.for(@colors-list); .-each(@value) {
+		    @name:  extract(@value, 1);
+		    @color:  extract(@value, 2);
+		    @color-inverse:  extract(@value, 3);
+
+			#header nav ul.nav-main {
+				li.dropdown-@{name} {
+					> a {
+						color: @color;
+					}
+					&.open,
+					&.active,
+					&:hover {
+						> a {
+							background: @color !important;
+							color: @color-inverse;
+						}
+					}
+				}
+				.dropdown-@{name}, .dropdown-@{name}.mega-menu-item {
+					> ul.dropdown-menu {
+						&, ul.dropdown-menu {
+							border-top-color: @color !important;
+							background: @color !important;
+						}
+						li {
+							a {
+								color: @color-inverse;
+							}
+							&:hover {
+								> a {
+									background: lighten(@color, 5%);
+								}
+							}
+						}
+					}
+					&:hover ul.sub-menu li:hover a:hover {
+						background: lighten(@color, 5%) !important;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Testimonial
+.testimonial {
+	blockquote {
+		background: lighten(@color-primary, 5%);
+	}
+
+	.testimonial-arrow-down {
+		border-top-color: lighten(@color-primary, 5%);
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.testimonial-@{name} {
+			blockquote {
+				background: lighten(@color, 5%);
+			}
+
+			.testimonial-arrow-down {
+				border-top-color: lighten(@color, 5%);
+			}
+		}
+
+	}
+}
+
+// Circular Bar
+.circular-bar.only-icon .fa {
+	color: @color-primary;
+}
+
+// Counters
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.counters {
+			.counter-@{name} {
+				.fa, strong {
+					color: @color;
+				}
+			}
+		}
+	}
+}
+
+// Icons
+.icon-featured {
+	background-color: @color-primary;
+}
+
+// Featured Box
+.featured-box-primary {
+	.icon-featured {
+		background-color: @color-primary;
+		&:after {
+			border-color:  @color-primary;
+		}		
+	}
+	h4 {
+		color: @color-primary;
+	}
+	.box-content {
+		border-top-color: @color-primary;
+	}
+}
+
+// Featured Box - Colors
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.featured-box-@{name} {
+			.icon-featured {
+				background-color: @color;
+			}
+			h4 {
+				color: @color;
+			}
+			.box-content {
+				border-top-color: @color;
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+		.featured-boxes-style-3 {
+			.featured-box.featured-box-@{name} {
+				.icon-featured {
+					border-color: @color;
+					color: @color;
+				}
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+		.featured-boxes-style-4 {
+			.featured-box.featured-box-@{name} {
+				.icon-featured {
+					border-color: @color;
+					color: @color;
+				}
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+		.featured-boxes-style-5 {
+			.featured-box.featured-box-@{name} {
+				.icon-featured {
+					color: @color;
+				}
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+		.featured-boxes-style-6 {
+			.featured-box.featured-box-@{name} {
+				.icon-featured {
+					color: @color;
+				}
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+		.featured-boxes-style-8 {
+			.featured-box.featured-box-@{name} {
+				.icon-featured {
+					color: @color;
+				}
+			}
+		}
+	}
+}
+
+// Featured Box - Effects
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.featured-box-effect-2.featured-box-@{name} {
+			.icon-featured:after {
+				box-shadow: 0 0 0 3px @color;
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.featured-box-effect-3.featured-box-@{name} {
+			.icon-featured:after {
+				box-shadow: 0 0 0 10px @color;
+			}
+			&:hover {
+				.icon-featured {
+					background: @color !important;
+				}
+			}
+		}
+	}
+}
+
+// Feature Box
+.feature-box {
+	.feature-box-icon {
+		background-color: @color-primary;
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.feature-box-@{name} {
+			.feature-box-icon {
+				background-color: @color;
+			}
+		}
+	}
+}
+
+.feature-box {
+	&.feature-box-style-2 {
+		.feature-box-icon {
+			i.fa {
+				color: @color-primary;
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.feature-box-@{name} {
+			&.feature-box-style-2 {
+				.feature-box-icon {
+					i.fa {
+						color: @color;
+					}
+				}
+			}
+		}
+	}
+}
+
+.feature-box {
+	&.feature-box-style-3 {
+		.feature-box-icon {
+			border-color: @color-primary;
+			i.fa {
+				color: @color-primary;
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.feature-box-@{name} {
+			&.feature-box-style-3 {
+				.feature-box-icon {
+					border-color: @color;
+					i.fa {
+						color: @color;
+					}
+				}
+			}
+		}
+	}
+}
+
+.feature-box {
+	&.feature-box-style-4 {
+		.feature-box-icon {
+			i.fa {
+				color: @color-primary;
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.feature-box-@{name} {
+			&.feature-box-style-4 {
+				.feature-box-icon {
+					i.fa {
+						color: @color;
+					}
+				}
+			}
+		}
+	}
+}
+
+.feature-box {
+	&.feature-box-style-5 {
+		.feature-box-icon {
+			i.fa {
+				color: @color-primary;
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.feature-box-@{name} {
+			&.feature-box-style-5 {
+				.feature-box-icon {
+					i.fa {
+						color: @color;
+					}
+				}
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.feature-box-@{name} {
+			&.feature-box-style-6 {
+				.feature-box-icon {
+					i.fa {
+						color: @color;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Featured Boxes Full
+html {
+	.for(@colors-scale-list); .-each(@value) {
+		@index:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+
+		.featured-boxes-full-scale {
+			> [class*="col-"]:nth-child(@{index}) {
+				.featured-box-full-primary {
+					background-color: @color;
+				}
+			}
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		.featured-boxes-full {
+			.featured-box-full-@{name} {
+				background-color: @color;
+				color: @color-inverse;
+			}
+		}
+	}
+}
+
+// Pricing Tables
+.pricing-table {
+	.most-popular {
+		border-color: @color-primary;
+		h3 {
+			.gradient(@color-primary, darken(@color-primary, 15%), @gradient) !important;
+		}
+	}
+
+	&.princig-table-flat {
+		.plan {
+			h3 {
+				background-color: @color-primary;
+				span {
+					background: @color-primary;
+				}
+			}
+		}
+	}
+}
+
+// Call to Action
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+		.call-to-action {
+			&.featured {
+				&.featured-@{name} {
+					border-top-color: @color;
+				}
+			}
+			&.call-to-action-@{name} {
+				background: @color;
+			}
+			&.with-full-borders {
+				border-color: @color;
+			}
+			&.call-to-action-@{name} {
+				background: @color;
+				h3, p {
+					color: @color-inverse;
+				}
+			}
+		}
+	}
+}
+
+// Timeline
+section.timeline .timeline-box.left:before,
+section.timeline .timeline-box.right:before {
+	background: @color-primary;
+	box-shadow: 0 0 0 3px #FFF, 0 0 0 6px @color-primary;
+}
+
+// History
+ul.history li .featured-box .box-content {
+	border-top-color: @color-primary;
+}
+
+// Blog
+.recent-posts .date, article.post .post-date {
+	.month {
+		background-color: @color-primary;
+	}
+	.day {
+		color: @color-primary;
+	}
+}
+
+// Home
+.slider .tp-bannertimer {
+	background-color: @color-primary;
+}
+
+.home-concept strong {
+	color: @color-primary;
+}
+
+// Home Intro
+.home-intro p em {
+	color: lighten(@color-primary, 10%);
+}
+
+// Shop
+.shop {
+	ul.products li.product .onsale {
+		background-color: @color-primary;
+		border-bottom-color: darken(@color-primary, 8%);
+	}
+
+	.star-rating span,
+	.cart-totals tr.total .amount {
+		color: @color-primary;
+	}
+}
+
+// Footer
+#footer {
+	.footer-ribbon {
+		background: @color-primary;
+	}
+
+	.footer-ribbon:before {
+		border-right-color: darken(@color-primary, 15%);
+		border-left-color: darken(@color-primary, 15%);
+	}
+
+	&.light {
+		h1,
+		h2,
+		h3,
+		h4,
+		a {
+			color: @color-primary !important;
+		}
+	}
+
+	&.color {
+		background: @color-primary;
+		border-top-color: @color-primary;
+		.footer-ribbon {
+			background: darken(@color-primary, 10%);
+		}
+
+		.footer-ribbon:before {
+			border-right-color: darken(@color-primary, 25%);
+		}
+		.footer-copyright {
+			background: darken(@color-primary, 5%);	
+			border-top-color: darken(@color-primary, 5%);
+		}
+	}
+}
+
+html {
+	.for(@colors-list); .-each(@value) {
+	    @name:  extract(@value, 1);
+	    @color:  extract(@value, 2);
+	    @color-inverse:  extract(@value, 3);
+
+		#footer {
+			&.color-@{name} {
+				background: @color;
+				border-top-color: @color;
+				.footer-ribbon {
+					background: darken(@color, 10%);
+				}
+
+				.footer-ribbon:before {
+					border-right-color: darken(@color, 25%);
+				}
+				.footer-copyright {
+					background: darken(@color, 5%);	
+					border-top-color: darken(@color, 5%);
+				}
+			}
+		}
+	}
+}
+
+// Boxed
+html.boxed .body {
+	border-top-color: @color-primary;
+}

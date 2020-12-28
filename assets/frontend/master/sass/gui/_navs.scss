@@ -1,0 +1,86 @@
+/* Navs */
+ul {
+	&.nav-list {
+		li {
+			margin: 0;
+			padding: 0;
+			display: block;
+			position: relative;
+			a {
+				@include transition (background 0.1s);
+				border-bottom: 1px solid #EDEDDE;
+				padding: 8px 0;
+				display: block;
+				color: #666;
+				font-size: 0.9em;
+				text-decoration: none;
+				&:before {
+					content: "";
+					display: inline-block;
+					width: 0; 
+					height: 0; 
+					border-top: 4px solid transparent;
+					border-bottom: 4px solid transparent;
+					border-left: 4px solid #333;
+					margin-left: 10px;
+					margin-right: 5px;
+					position: relative;
+				}
+				&:hover {
+					background-color: #eee;
+					text-decoration: none;
+				}
+			}
+			&.active > a {
+				font-weight: bold;
+			}
+			ul {
+				list-style: none;
+				margin: 0 0 0 25px;
+				padding: 0;
+			}
+			&:last-child {
+				a {
+					border-bottom: none;
+				}
+			}
+		}
+
+		&.hide-not-active {
+			li {
+				ul {
+					display: none;
+				}
+				&.active {
+					ul {
+						display: block;
+					}
+				}
+			}
+		}
+
+		&.show-bg-active {
+			.active > a {
+				background-color: #f5f5f5;
+				&:hover {
+					background-color: #eee;
+				}
+			}
+		}
+	}
+
+	&.narrow {
+		li {
+			a {
+				padding: 4px 0;
+			}
+		}
+	}
+
+	&.nav-pills > li.active > a {
+		background-color: #CCC;
+		&:hover, &:focus {
+			background-color: #CCC;
+		}
+	}
+}

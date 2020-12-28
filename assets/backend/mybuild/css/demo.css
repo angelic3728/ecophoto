@@ -1,0 +1,249 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+body {
+    margin: 20px;
+    font-size: 14px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #555;
+}
+
+.hide {
+    display: none;
+}
+
+pre {
+    margin: 0 !important;
+    display: inline-block;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+    background: none;
+}
+
+input,
+button {
+    height: 35px;
+    margin: 0;
+    padding: 6px 12px;
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: 100%;
+    color: inherit;
+}
+
+input[disabled],
+button[disabled] {
+    background-color: #eee;
+}
+
+input,
+select {
+    border: 1px solid #CCC;
+    width: 250px;
+}
+
+::-webkit-input-placeholder {
+    color: #BBB;
+}
+
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #BBB;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: #BBB;
+}
+
+button {
+    color: #FFF;
+    background-color: #428BCA;
+    border: 1px solid #357EBD;
+}
+
+button:hover {
+    background-color: #3276B1;
+    border-color: #285E8E;
+    cursor: pointer;
+}
+
+#result {
+    margin-bottom: 100px;
+}
+
+.bgColor {
+    max-width: 440px;
+    height: 400px;
+    background-color: #c3e8cb;
+    padding: 30px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+#targetOuter {
+    position: relative;
+    text-align: center;
+    background-color: #F0E8E0;
+    margin: 20px auto;
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 4px;
+}
+
+.btnSubmit {
+    background-color: #565656;
+    border-radius: 4px;
+    padding: 10px;
+    border: #333 1px solid;
+    color: #FFFFFF;
+    width: 200px;
+    cursor: pointer;
+}
+
+.inputFile {
+    padding: 5px 0px;
+    margin-top: 8px;
+    background-color: #FFFFFF;
+    width: 48px;
+    overflow: hidden;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.icon-choose-image {
+    position: absolute;
+    opacity: 0.1;
+    top: 50%;
+    left: 50%;
+    margin-top: -24px;
+    margin-left: -24px;
+    width: 48px;
+    height: 48px;
+}
+
+.upload-preview {
+    border-radius: 4px;
+    min-height: 100px;
+    min-width: 100px;
+    height: auto;
+}
+
+#body-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#body-overlay div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -32px;
+    margin-left: -32px;
+}
+
+.text-success {
+    color: #28a745!important;
+}
+
+.spinner-border {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: text-bottom;
+    border: .35em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: spinner-border .75s linear infinite;
+    animation: spinner-border .75s linear infinite;
+}
+
+@keyframes spinner-border {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner-body {
+    position: absolute;
+    display: none;
+    top: 45%;
+    width: 100%;
+    height: 10%;
+    text-align: center;
+}
+
+.spinner-body .spinner-border {
+    width: 100px;
+    height: 100px;
+}
+
+#back_to_school {
+    float: right;
+    font-size: 25px;
+    color: #0088cc;
+    cursor: pointer;
+}
+
+#back_to_school:hover {
+    color: blueviolet;
+}
+
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+    vertical-align: middle;
+}
+
+.pre_loader {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: black;
+    z-index: 100;
+    opacity: 0.4;
+    display: none;
+}
+
+.photo-checked {
+    color: green;
+    font-size: 40px;
+}
+
+.photo-unchecked {
+    color: red;
+    font-size: 40px;
+}
+
+.lang_select {
+    float: left;
+    height: 34px;
+    width: 120px;
+    padding: 3px 6px;
+    margin-top: 10px;
+}
+
+.panel-heading {
+    background-color: #0088cc;
+}
+
+.panel-heading .panel-title {
+    color: white;
+}
